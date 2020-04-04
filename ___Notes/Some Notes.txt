@@ -1,0 +1,49 @@
+Username: nlHDem7JeI
+
+Database name: nlHDem7JeI
+
+Password: vzbcC1xyEV
+
+Server: remotemysql.com
+
+Port: 3306
+
+These are the username and password to log in to your database and phpMyAdmin
+
+
+################################################################################
+
+
+CREATE TABLE `nlHDem7JeI`.`State` ( `Id` INT NOT NULL AUTO_INCREMENT , `State_Name` VARCHAR(255) NOT NULL , `Code` VARCHAR(10) NOT NULL , `City_Id` INT NOT NULL DEFAULT '1' , PRIMARY KEY (`Id`)) ENGINE = InnoDB;
+
+CREATE TABLE `nlHDem7JeI`.`City` ( `Id` INT NOT NULL AUTO_INCREMENT , `City_Name` VARCHAR(255) NOT NULL , `State_Id` INT NOT NULL , PRIMARY KEY (`Id`)) ENGINE = InnoDB;
+
+
+################################################################################
+
+npm i express body-parser cors cryptr jsonwebtoken
+npm install -g sequelize-auto -g mysql
+npm install --save sequelize mysql2
+
+SYNTAX :  FOLLOW https://github.com/sequelize/sequelize-auto
+sequelize-auto -h <host> -d <database> -u <user> -x [password] -p [port]  --dialect [dialect] -c [/path/to/config] -o [/path/to/models] -t [tableName] -C
+EXAMPLE :
+sequelize-auto -o "./models" -d sequelize_auto_test -h localhost -u my_username -p 5432 -x my_password -e postgres
+
+sequelize-auto -o "./model" -d laravel_bitmovi -h 192.168.0.11 -u developer -p 81 -x Mass4Pass -e mysql
+
+
+#######################################################
+HERE : -->>>>
+sequelize-auto -o "./models" -d nlHDem7JeI -h remotemysql.com -u nlHDem7JeI  -x vzbcC1xyEV -e mysql
+
+-p 3306 is not necessary.
+############################################################
+
+Step 1 ) Use sequelize-auto to create auto generated model
+Step 2 ) After creating model you have put         autoIncrement: true    for each Model for 
+auto increament id.
+Step 3 ) In DBContext file create something like that
+DBContext.UserMaster = require('../models/UserMaster.js')(_sequelize,Sequelize);
+Step 4 ) Create your own business method.
+
