@@ -4,6 +4,8 @@ const sgMail = require('@sendgrid/mail');
 
 
 const SEND_GRID_APIKEY = config.get('SEND_GRID_APIKEY');
+const SEND_GRID_FROM_EMAIL = config.get('SEND_GRID_FROM_EMAIL');
+
 sgMail.setApiKey(SEND_GRID_APIKEY);
 
 
@@ -11,7 +13,7 @@ sgMail.setApiKey(SEND_GRID_APIKEY);
 module.exports.SendMail =  function (To,Subject,MailBody) { 
     const msg = {
         to: To,
-        from: 'deepjyotyroy@gmail.com',
+        from: SEND_GRID_FROM_EMAIL,
         subject: Subject,
         html: MailBody,
       };
