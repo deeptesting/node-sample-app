@@ -6,6 +6,8 @@ const DBContext = require('./databaselayer/DBContext');
 const StateMethods = require('./businesslogiclayer/StateMethods');
 const CityMethods = require('./businesslogiclayer/CityMethods');
 
+const Utility_Mail = require('./thirdparty/utility_mail');
+
 async function Main(){
     // var insertedState = (await DBContext.State.create({
     //     State_Name : "Bihar",
@@ -41,6 +43,10 @@ async function Main(){
     }
   // var data = await CityMethods.UpdateCityByID(cityobj,1);
    //console.log(data)
+
+   Utility_Mail.SendMail('deepuapps1991@gmail.com','Sending with Twilio SendGrid is Fun',
+   '<strong>and easy to do anywhere, even with Node.js</strong>'
+   )
 }
 
 Main();
