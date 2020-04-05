@@ -7,6 +7,8 @@ const StateMethods = require('./businesslogiclayer/StateMethods');
 const CityMethods = require('./businesslogiclayer/CityMethods');
 
 const Utility_Mail = require('./thirdparty/utility_mail');
+const Utility_Common = require('./utility/utilityCommon');
+const Utility_Encryption = require('./thirdparty/utility_encryption');
 
 async function Main(){
     // var insertedState = (await DBContext.State.create({
@@ -42,11 +44,21 @@ async function Main(){
         State_Id : 1
     }
   // var data = await CityMethods.UpdateCityByID(cityobj,1);
-   //console.log(data)
+ 
+//   var pwd = Utility_Common.generatePassword(8);
+//   console.log("pwd",pwd);
 
-   Utility_Mail.SendMail('deepuapps1991@gmail.com','Sending with Twilio SendGrid is Fun',
-   '<strong>and easy to do anywhere, even with Node.js</strong>'
-   )
+  var hash = Utility_Encryption.CreatePasswordHash("79hBsfqF");
+  console.log("hash ",hash)
+
+var IsMatched = Utility_Encryption.IsMatchPasswordHash("79hBsfqF","$2b$10$g5r6BqOhoIY0QVo5HEYnfOLv2nFpoMVoCB2MRc5NIbE9bzN3VLYKq");
+console.log(IsMatched)
+
+
+
+//    Utility_Mail.SendMail('deepuapps1991@gmail.com','Sending with Twilio SendGrid is Fun',
+//    '<strong>and easy to do anywhere, even with Node.js</strong>'
+//    )
 }
 
 Main();

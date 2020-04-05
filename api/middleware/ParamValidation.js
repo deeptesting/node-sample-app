@@ -1,4 +1,7 @@
 const APPDATA = require('../application_variable/AppVariable');
+const FILE_HANDLE = require('../../utility/utilityFileHandle');
+
+
 
 /**
  * @param req Request
@@ -10,7 +13,7 @@ const APPDATA = require('../application_variable/AppVariable');
  * @param StringMinLength For check Any minimum length of String, By Default=0
  * @param StringMaxLength For check Any maximum length of String, By Default=0
  * @description :  To Validate the parameter
- * @returns void
+ * @returns bool
  */
 module.exports.Validate = function(req,res,next,paramName,IsRequired=false,RegexMatchExp="",
 StringMinLength=0,StringMaxLength=0){
@@ -54,10 +57,8 @@ StringMinLength=0,StringMaxLength=0){
                 }                
             }
         }
-
-
     }
-
+    
     return true;
 }
 
@@ -66,7 +67,60 @@ StringMinLength=0,StringMaxLength=0){
 
 
 
-
-module.exports.ValidateFile=function(req,res,next,paramName,IsRequired=false,MaxFileSizeinKB=500){
+/**
+ * @param req Request
+ * @param res Response
+ * @param next Next
+ * @param paramName parameter name to find in request body
+ * @param IsRequired boolean true/false deafult value false
+ * @param MaxFileSizeinKB default value 500
+ * @param SupportExtensions default value "jpeg,jpg,png"
+ * @description :  To Validate the file
+ * @returns bool
+ */
+module.exports.ValidateFile=function(req,res,next,paramName,IsRequired=false,
+    MaxFileSizeinKB=500,SupportExtensions="jpeg,jpg,png"){
     
+     var allfiles = req.files ;
+     if(IsRequired==true && allfiles[paramName]==undefined){
+        res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN);  
+        res.body = {message:paramName+" is required"}; return false;
+     }
+     if(allfiles[paramName]!=undefined && Array.isArray(allfiles[paramName])){
+        //First Check Image file size
+        var FileSizeIsOK = true;
+        for(var i=0;i<allfiles[paramName].length;i++){
+            if((allfiles[paramName][i]).size > MaxFileSizeinKB*1000){ 
+                FILE_HANDLE.RemoveFileFromBuffer(allfiles[paramName][i].path);
+                FileSizeIsOK = false;
+            }
+        }
+        
+
+        //2nd Check file extension check
+        var FileExtensionIsOK = true;
+        for(var i=0;i<allfiles[paramName].length;i++){
+           var fname =  allfiles[paramName][i].originalname;
+           var ext = fname.substr(fname.lastIndexOf('.') + 1);
+           var IsMatched = SupportExtensions.includes(ext);
+           if(!IsMatched){ 
+               FileExtensionIsOK = false; 
+               FILE_HANDLE.RemoveFileFromBuffer(allfiles[paramName][i].path);
+           }
+        }
+
+
+        if(FileSizeIsOK==false){
+            res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN);  
+            res.body = {message:paramName+` size is greater than ${MaxFileSizeinKB} KB`}; return false;
+        }
+
+
+        if(FileExtensionIsOK==false){
+            res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN);  
+            res.body = {message:paramName+` must be type of ${SupportExtensions}`}; return false;
+        }
+
+     }
+     return true;
 }

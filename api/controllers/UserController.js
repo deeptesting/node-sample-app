@@ -3,7 +3,7 @@ const JWT_METHODS = require('../../thirdparty/utility_jwt');
 const USER_METHODS = require('../../businesslogiclayer/UserMethods');
 const  ERRORHANDLE = require('../middleware/ErrorHandle');
 const  VALIDATION = require('../middleware/ParamValidation');
-
+const FILE_HANDLE = require('../../utility/utilityFileHandle');
 
 
 
@@ -52,12 +52,21 @@ module.exports.Dashboard = function(req,res,next){
 
 module.exports.InsertUser = async function(req,res,next){
     try {
-        console.log("req.body",req.body);
+     //   console.log("req.body",req.body);
         console.log("req.files",req.files);
 
         if(!VALIDATION.Validate(req,res,next,'useremail',true,APPDATA.REGEX_PATTERN.EMAIL) ){ return next(); }
         if(!VALIDATION.Validate(req,res,next,'fullname',true,APPDATA.REGEX_PATTERN.NAME) ){ return next(); }
         if(!VALIDATION.Validate(req,res,next,'cityid',true) ){ return next(); }
+
+        if(!VALIDATION.ValidateFile(req,res,next,'profileimage',false) ){ return next(); }
+
+        if(req.files.profileimage !=undefined){
+           var fileItem = req.files.profileimage[0];
+          // var filePath = appRootDirectory+"\\"+fileItem.path ;
+           var outputfile = await FILE_HANDLE.MoveFileFromBuffer(fileItem.path,"public\\Content\\UserImage");
+           console.log("outputfile",outputfile)
+        }
 
         var timeStamp = Math.floor(Date.now() / 1000);
             var userobj = {

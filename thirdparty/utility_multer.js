@@ -1,5 +1,16 @@
 var multer  = require('multer');
-var upload = multer(); //https://www.npmjs.com/package/multer
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/buffer/')
+  },
+  filename: function (req, file, cb) {
+    let ext = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
+    cb(null, Date.now() + ext);
+  }
+})
+
+var upload = multer({storage: storage}); //https://www.npmjs.com/package/multer
 
 
 /**
