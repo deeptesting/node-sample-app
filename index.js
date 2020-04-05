@@ -17,7 +17,15 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(express.static(__dirname))
+//app.use(express.static(__dirname))
+
+//** ---------------------------For Static Files --------------------------- */
+app.use('/static', express.static(__dirname + '/public'));
+//** ---------------------------For Static Files  END--------------------------- */
+
+
+
+
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -55,6 +63,13 @@ app.all('*', function(req, res){
     res.body = {  message:"Url not found" };
     response_formatter.FormatResponse(req,res)
 });
+
+
+
+
+//** ---------------------------For Global Variable --------------------------- */
+global.appRootDirectory = path.dirname(require.main.filename);
+//** ---------------------------For Global Variable END --------------------------- */
 
 
 

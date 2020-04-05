@@ -1,11 +1,9 @@
+https://remotemysql.com/phpmyadmin/index.php?db=nlHDem7JeI
+
 Username: nlHDem7JeI
-
 Database name: nlHDem7JeI
-
 Password: vzbcC1xyEV
-
 Server: remotemysql.com
-
 Port: 3306
 
 These are the username and password to log in to your database and phpMyAdmin

@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "22d6e84d-a1bb-4849-b3c2-c4d15a2f2d52",
+		"name": "Test API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "City",
+			"item": [
+				{
+					"name": "City List",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJicmFkQGdtYWlsLmNvbSIsIlVzZXJFbWFpbCI6ImJyYWRAZ21haWwuY29tIiwiaWF0IjoxNTg2MDIyMDEzLCJleHAiOjE1ODYwMjU2MTN9.IBKY0NnMve5rGFlnb_m3S5oadCcLFvaccm56iU2DAgI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"passkey\": \"38cf572ebd8dd89a5756c179efcbf9d50b28dba3b158cbdf90ab614469e7e1e979d32f551e9a9eddbd241a2537128f369ccecbd33b6e942bb2a6aded4effca613529b173cfcaf1be11951da24e1910c89c9b76fca6f3cbb0a66d70a60d9bea08b688ff74fe1a0cc1b50a730b57953d37b87c62e389805ff2b6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/city",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "City Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJicmFkQGdtYWlsLmNvbSIsIlVzZXJFbWFpbCI6ImJyYWRAZ21haWwuY29tIiwiaWF0IjoxNTg2MDIyMDEzLCJleHAiOjE1ODYwMjU2MTN9.IBKY0NnMve5rGFlnb_m3S5oadCcLFvaccm56iU2DAgI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"passkey\": \"38cf572ebd8dd89a5756c179efcbf9d50b28dba3b158cbdf90ab614469e7e1e979d32f551e9a9eddbd241a2537128f369ccecbd33b6e942bb2a6aded4effca613529b173cfcaf1be11951da24e1910c89c9b76fca6f3cbb0a66d70a60d9bea08b688ff74fe1a0cc1b50a730b57953d37b87c62e389805ff2b6\"\n\t ,\"city_name\":\"Bhopal878\"\n     ,\"state_id\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/city/update/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"city",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "City Insert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJicmFkQGdtYWlsLmNvbSIsIlVzZXJFbWFpbCI6ImJyYWRAZ21haWwuY29tIiwiaWF0IjoxNTg2MDIwOTk4LCJleHAiOjE1ODYwMjIxOTh9.tQD54iayAJzX9I3svvmOk_lPpjx40cd9F-fOMBI-2wo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"passkey\": \"38cf572ebd8dd89a5756c179efcbf9d50b28dba3b158cbdf90ab614469e7e1e979d32f551e9a9eddbd241a2537128f369ccecbd33b6e942bb2a6aded4effca613529b173cfcaf1be11951da24e1910c89c9b76fca6f3cbb0a66d70a60d9bea08b688ff74fe1a0cc1b50a730b57953d37b87c62e389805ff2b6\"\n\t ,\"city_name\":\"Gwalior5\"\n     ,\"state_id\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/city/insert",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"city",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"brad@gmail.com\",\n\t\"password\":\"Mass4Pass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Dashboard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJicmFkQGdtYWlsLmNvbSIsIlVzZXJFbWFpbCI6ImJyYWRAZ21haWwuY29tIiwiaWF0IjoxNTg2MDc4MTk3LCJleHAiOjE1ODYwOTk3OTd9.7YOuLDWnv5KSYVgRGCfYAVIt4nkPdarJityYXGgD3kc",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "useremailstamp}}i",
+									"value": "deepjyotyroy@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "fullname",
+									"value": "Deep",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "8777785962",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "Birati, kolkata -51",
+									"type": "text"
+								},
+								{
+									"key": "passkey",
+									"value": "0c406380977b96d61688b4dd5a4fe591d983225de7b153ac46badbc4819b0e25d011574173e96fbd786572a0f85bd250f8737e71e3da9af507291d3b260681502658a8e9e9a11b68d1e1c770d4ec413598c92dccd7f4f5dfcf192986d54dbb7b4b103ea7e6169a344f964060c7d5386ae6922dca741ce0b216",
+									"type": "text"
+								},
+								{
+									"key": "cityid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "profileimage",
+									"type": "file",
+									"src": "/C:/Users/deep-dell/Desktop/alla.jpg"
+								},
+								{
+									"key": "useremail",
+									"value": "test@gmail.com",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/insert",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Insert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJicmFkQGdtYWlsLmNvbSIsIlVzZXJFbWFpbCI6ImJyYWRAZ21haWwuY29tIiwiaWF0IjoxNTg2MDc4MTk3LCJleHAiOjE1ODYwOTk3OTd9.7YOuLDWnv5KSYVgRGCfYAVIt4nkPdarJityYXGgD3kc",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "useremailstamp}}i",
+									"value": "deepjyotyroy@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "fullname",
+									"value": "Deep",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "8777785962",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Birati, kolkata -51",
+									"type": "text"
+								},
+								{
+									"key": "passkey",
+									"value": "0c406380977b96d61688b4dd5a4fe591d983225de7b153ac46badbc4819b0e25d011574173e96fbd786572a0f85bd250f8737e71e3da9af507291d3b260681502658a8e9e9a11b68d1e1c770d4ec413598c92dccd7f4f5dfcf192986d54dbb7b4b103ea7e6169a344f964060c7d5386ae6922dca741ce0b216",
+									"type": "text"
+								},
+								{
+									"key": "cityid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "profileimage",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "useremail",
+									"value": "test@gmail.com",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/insert",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

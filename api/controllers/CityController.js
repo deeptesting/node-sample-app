@@ -10,6 +10,8 @@ const CITY_METHODS = require('../../businesslogiclayer/CityMethods');
 
 module.exports.GetAllCities = async function(req,res,next){
     try {
+        console.log("appRootDirectory",appRootDirectory);
+        
         var allcities = await  CITY_METHODS.GetAllCitis();
         res.status(APPDATA.HTTP_STATUS_CODE.OK);  
         res.body = allcities; return next();
@@ -38,7 +40,7 @@ module.exports.GetCityByID = async function(req,res,next){
 module.exports.InsertCity = async function(req,res,next){
     try {
         
-        if(!VALIDATION.Validate(req,res,next,'city_name',true,/^[A-Za-z ]+$/) ){ return next(); }
+        if(!VALIDATION.Validate(req,res,next,'city_name',true,APPDATA.REGEX_PATTERN.NAME) ){ return next(); }
         if(!VALIDATION.Validate(req,res,next,'state_id',true) ){ return next(); }
 
 

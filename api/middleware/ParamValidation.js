@@ -60,3 +60,13 @@ StringMinLength=0,StringMaxLength=0){
 
     return true;
 }
+
+
+
+
+
+
+
+module.exports.ValidateFile=function(req,res,next,paramName,IsRequired=false,MaxFileSizeinKB=500){
+    
+}

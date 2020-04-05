@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
+    UserId: {
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
     UserEmail: {
       type: DataTypes.STRING(255),
       allowNull: false,
@@ -42,6 +46,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(1),
       allowNull: false,
       defaultValue: '1'
+    },
+    ProfileImage: {
+      type: DataTypes.STRING(1000),
+      allowNull: true
     }
   }, {
     tableName: 'UserMaster'
