@@ -71,7 +71,7 @@ app.all('*', function(req, res){
 global.appRootDirectory = path.dirname(require.main.filename);
 //** ---------------------------For Global Variable END --------------------------- */
 
-
+var mode="development";
 
 // ############################ SERVER START ################################
 const APPLICATION_PORT = config.get('APPLICATION_PORT');
