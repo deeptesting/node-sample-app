@@ -45,7 +45,7 @@ app.use("/api",app_api_routes);
 
 // ================ Internal Server Error Set Global err handling ==================
 app.use(function (err, req, res, next) {
-    console.log("here")
+     
     error_handle.HandleError(err,req,res);
 })
 
@@ -58,7 +58,7 @@ app.get('/', (req, res) => {
 
 // ================ 404 Error  handling ==================
 app.all('*', function(req, res){
-    console.log("get * 404")
+    console.log("get * 404");
     res.status(APPDATA.HTTP_STATUS_CODE.PAGE_NOT_FOUND);
     res.body = {  message:"Url not found" };
     response_formatter.FormatResponse(req,res)

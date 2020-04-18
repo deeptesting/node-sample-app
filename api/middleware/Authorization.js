@@ -2,7 +2,7 @@ const config = require('config');
 const APPDATA = require('../application_variable/AppVariable');
 const JWT_METHODS = require('../../thirdparty/utility_jwt');
 const USER_METHODS = require('../../businesslogiclayer/UserMethods');
-
+const response_formatter = require('../middleware/FormatResponse');
 
 module.exports.Auth = function(req,res,next){
     var bearerToken = "";
@@ -42,37 +42,80 @@ module.exports.Auth = function(req,res,next){
                  /** Now do check if jwttoken is valid , then check passkey */
                  if(req.body.passkey==undefined || req.body.passkey=="") 
                  {  
-                     res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN).send({ error: "Passkey is missing" }); 
+                    res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN);
+                    res.body = {  message:"Passkey is missing" };
+                    return response_formatter.FormatResponse(req,res);
                  }
                  else{
                    if(user==undefined) {  
-                       res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN).send({ error: "Forbidden Error" }); 
-                     }
+                            res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN);
+                            res.body = {  message:"Forbidden Error" };
+                            return response_formatter.FormatResponse(req,res);
+                    }
                     else{
                         const IsUserVerified = USER_METHODS.verifyPassKey(req.body.passkey,user);
                         if(IsUserVerified){ 
 
-                                req.user = user;
+                                req.user = user; 
                                 if(IsTokenRegenerate){
                                     var jwtToken =  JWT_METHODS.createToken(user);
                                     req.RefreshToken = jwtToken;
                                 }
-                                next(); 
+                                return next(); 
                             }
                         else{
-                        res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN).send({ error: "Invalid PassKey" });
-                        }
+                            res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN);
+                            res.body = {  message:"Invalid Passkey1" };
+                            return response_formatter.FormatResponse(req,res);
+                        } 
                     }
                  }
                                  
               })
               .catch((err) => {
                   if(bearerToken!=""){
-                    var decoded = JWT_METHODS.decodeToken(bearerToken);
-                    console.log(decoded);
+                    var decoded_user = JWT_METHODS.decodeToken(bearerToken);
+                    delete decoded_user.exp ;
+                    delete decoded_user.iat ;
+                    
+                    /////--------------------------------------------
+                    if(decoded_user!=undefined && decoded_user!=null && 
+                        decoded_user.RememberMe!=undefined && decoded_user.RememberMe==true){
+
+                        /** Now do check if jwttoken is valid , then check passkey */
+                            if(req.body.passkey==undefined || req.body.passkey=="") 
+                            {  
+                                res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN);
+                                res.body = {  message:"Passkey is missing" };
+                                return response_formatter.FormatResponse(req,res);
+                                    
+                            }
+                            else{
+                                const IsUserVerified = USER_METHODS.verifyPassKey(req.body.passkey,decoded_user);
+                                if(IsUserVerified){ 
+                           
+                                        req.user = decoded_user; 
+                                        
+                                        var jwtToken =  JWT_METHODS.createToken(decoded_user);
+                                        req.RefreshToken = jwtToken; 
+                                        return next(); 
+                                    }
+                                else{
+                                    res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN)
+                                    res.body = {  message:"Invalid PassKey" };
+                                    return response_formatter.FormatResponse(req,res);
+                                   
+                                }
+                            }
+                    }
+                    /////--------------------------------------------
                   }
+                 // Forbidden
+                  res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN)
+                  res.body = {  message:"Invalid Token" };
+                  return response_formatter.FormatResponse(req,res);
+
                 
-                res.status(APPDATA.HTTP_STATUS_CODE.FORBIDDEN).send({ error: "Invalid Token" }); // Forbidden
               });
         }
     }

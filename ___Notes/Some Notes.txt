@@ -34,6 +34,12 @@ sequelize-auto -o "./model" -d laravel_bitmovi -h 192.168.0.11 -u developer -p 8
 #######################################################
 HERE : -->>>>
 sequelize-auto -o "./models" -d nlHDem7JeI -h remotemysql.com -u nlHDem7JeI  -x vzbcC1xyEV -e mysql
+sequelize-auto -o "./models" -d nlHDem7JeI -h remotemysql.com -u nlHDem7JeI  -x vzbcC1xyEV -e mysql -t UserRole
+
+sequelize-auto -o "./models" -d nlHDem7JeI -h remotemysql.com -u nlHDem7JeI  -x vzbcC1xyEV -e mysql -t UserRole
+
+
+
 
 -p 3306 is not necessary.
 ############################################################

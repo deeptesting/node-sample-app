@@ -126,7 +126,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"username\":\"brad@gmail.com\",\n\t\"password\":\"Mass4Pass\"\n}",
+							"raw": "{\n\t\"username\":\"admin@gmail.com\",\n\t\"password\":\"813I131j\",\n\t\"RememberMe\":false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -155,7 +155,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJicmFkQGdtYWlsLmNvbSIsIlVzZXJFbWFpbCI6ImJyYWRAZ21haWwuY29tIiwiaWF0IjoxNTg2MDc4MTk3LCJleHAiOjE1ODYwOTk3OTd9.7YOuLDWnv5KSYVgRGCfYAVIt4nkPdarJityYXGgD3kc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJmZjQzNWVkMy1iNzdmLTQyZDgtOTA1Mi05YWUyNjRmZjYxYTYiLCJSb2xlcyI6ImFkbWluIiwiaWF0IjoxNTg3MjA2MzA1LCJleHAiOjE1ODcyMjc5MDV9.guAjfIRK_ZjAIaKTwsy70478MEpHoQG3qob0PEigvfk",
 								"type": "text"
 							},
 							{
@@ -166,51 +166,8 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "useremailstamp}}i",
-									"value": "deepjyotyroy@gmail.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "fullname",
-									"value": "Deep",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "8777785962",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "address",
-									"value": "Birati, kolkata -51",
-									"type": "text"
-								},
-								{
-									"key": "passkey",
-									"value": "0c406380977b96d61688b4dd5a4fe591d983225de7b153ac46badbc4819b0e25d011574173e96fbd786572a0f85bd250f8737e71e3da9af507291d3b260681502658a8e9e9a11b68d1e1c770d4ec413598c92dccd7f4f5dfcf192986d54dbb7b4b103ea7e6169a344f964060c7d5386ae6922dca741ce0b216",
-									"type": "text"
-								},
-								{
-									"key": "cityid",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "profileimage",
-									"type": "file",
-									"src": "/C:/Users/deep-dell/Desktop/alla.jpg"
-								},
-								{
-									"key": "useremail",
-									"value": "test@gmail.com",
-									"type": "text"
-								}
-							],
+							"mode": "raw",
+							"raw": "{\n \"passkey\": \"8bfdb993f97211a29db4f2a1ea8de47570fe472305a5c57f198925f95f8deaa381046f9ecdb4f28360a55798b2a3881337b043e2908bb3f4271a42499a082921808abb2a1701060af5b7a0da7c24f386c4a90b728138d9e504e347e28b9fae9fd64fd79e052c5f7f3460b9ecfdab5fb738fea7ff\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -218,7 +175,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/user/insert",
+							"raw": "localhost:3000/api/user/dashboard",
 							"host": [
 								"localhost"
 							],
@@ -226,7 +183,7 @@
 							"path": [
 								"api",
 								"user",
-								"insert"
+								"dashboard"
 							]
 						}
 					},
@@ -239,7 +196,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJicmFkQGdtYWlsLmNvbSIsIlVzZXJFbWFpbCI6ImJyYWRAZ21haWwuY29tIiwiaWF0IjoxNTg2MDc4MTk3LCJleHAiOjE1ODYwOTk3OTd9.7YOuLDWnv5KSYVgRGCfYAVIt4nkPdarJityYXGgD3kc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJicmFkQGdtYWlsLmNvbSIsIlVzZXJFbWFpbCI6ImJyYWRAZ21haWwuY29tIiwiaWF0IjoxNTg2MTAzODQ3LCJleHAiOjE1ODYxMjU0NDd9.QEIQ2o5Hgr-iSnLWB8TvKiozP--Kr_LkR_f1Ql6W4jU",
 								"type": "text"
 							},
 							{
@@ -260,7 +217,7 @@
 								},
 								{
 									"key": "fullname",
-									"value": "Deep",
+									"value": "Admin",
 									"type": "text"
 								},
 								{
@@ -275,8 +232,9 @@
 								},
 								{
 									"key": "passkey",
-									"value": "0c406380977b96d61688b4dd5a4fe591d983225de7b153ac46badbc4819b0e25d011574173e96fbd786572a0f85bd250f8737e71e3da9af507291d3b260681502658a8e9e9a11b68d1e1c770d4ec413598c92dccd7f4f5dfcf192986d54dbb7b4b103ea7e6169a344f964060c7d5386ae6922dca741ce0b216",
-									"type": "text"
+									"value": "3e258ab9d5e72afa8eeb90fed11ef403837d9728b5107218954d9092236ff7c3f14f5c55a556b62bf22ba8ebbd1fb4ca3db33a3a3a37ad22f08add1e29870a6566b0bf12310f1c1b3f5ee912c19fa248671b05325f1ea31497e8353e470c62360e8187bb3d52dc972a0b6386b7994cf156dc2e8cc9ff93409e",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "cityid",
@@ -286,11 +244,11 @@
 								{
 									"key": "profileimage",
 									"type": "file",
-									"src": []
+									"src": "/C:/Users/deep-dell/Downloads/GetBajajDetails.jpg"
 								},
 								{
 									"key": "useremail",
-									"value": "test@gmail.com",
+									"value": "admin@gmail.com",
 									"type": "text"
 								}
 							],

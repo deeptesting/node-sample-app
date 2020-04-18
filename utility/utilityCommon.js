@@ -1,4 +1,12 @@
 var crypto = require('crypto');
+const config = require('config');
+
+const HOST_URL = config.get('HOST_URL');
+
+
+function escapeRegExp(string) {
+    return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+  }
 
 
 /**
@@ -9,8 +17,22 @@ var crypto = require('crypto');
  * @returns String  
  */
 module.exports.ReplaceAll = function(str, find, replace) {
-    return str.replace(new RegExp(find, 'g'), replace);
+    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
+
+
+/**
+ * @param imgFolderPath 'public\\Content\\UserImage\\1587195434152.jpg'
+ * @description :  To Create a image Link
+ * @returns String  
+ */
+module.exports.GetImageUrl = function(imgFolderPath) {
+    var url = HOST_URL+"/"+ this.ReplaceAll(this.ReplaceAll(imgFolderPath,'\\','/'),'public','static');
+    return url;
+}
+
+
+
 
 
 /**
@@ -46,9 +68,9 @@ module.exports.generatePassword =  function(length) {
 
 
 
-var salt = "Ck1MC8lvE6vIN5sWXN90Jb+j1VjzpJwbiWJ8ImCll2s="; //crypto.randomBytes(128).toString('base64');
+// var salt = "Ck1MC8lvE6vIN5sWXN90Jb+j1VjzpJwbiWJ8ImCll2s="; //crypto.randomBytes(128).toString('base64');
 
-module.exports.generateHash = function(pwd) {
-    var hmac = crypto.createHmac('sha256', this.salt);
-    return hmac.update(pwd).digest('hex');
-};
+// module.exports.generateHash = function(pwd) {
+//     var hmac = crypto.createHmac('sha256', this.salt);
+//     return hmac.update(pwd).digest('hex');
+// };

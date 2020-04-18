@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     RegistrationTime: {
-      type: DataTypes.DATE,
+      type: 'TIMESTAMP',
       allowNull: true,
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     },

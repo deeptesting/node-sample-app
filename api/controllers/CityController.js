@@ -10,7 +10,7 @@ const CITY_METHODS = require('../../businesslogiclayer/CityMethods');
 
 module.exports.GetAllCities = async function(req,res,next){
     try {
-        console.log("appRootDirectory",appRootDirectory);
+        //console.log("appRootDirectory",appRootDirectory);
         
         var allcities = await  CITY_METHODS.GetAllCitis();
         res.status(APPDATA.HTTP_STATUS_CODE.OK);  

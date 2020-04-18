@@ -41,7 +41,7 @@ router.route('/city/update/:id').post(Authorization.Auth,CityCntrlr.UpdateCity,R
 
 
 //var cpUpload = upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'testimg', maxCount: 1 }])
-router.route('/user/insert').post(UtilityMulter.MultipleFiles(['profileimage']),Authorization.Auth,UserCntrlr.InsertUser,ResponseFormatter.FormatResponse);
+router.route('/user/insert').post(UtilityMulter.MultipleFiles(['profileimage']),UserCntrlr.InsertUser,ResponseFormatter.FormatResponse);
 
 
 

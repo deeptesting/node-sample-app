@@ -26,7 +26,7 @@ DBContext._sequelize = _sequelize ;
 DBContext.State = require('../models/State.js')(_sequelize,Sequelize);
 DBContext.City = require('../models/City.js')(_sequelize,Sequelize);
 DBContext.UserMaster = require('../models/UserMaster.js')(_sequelize,Sequelize);
-
+DBContext.UserRole = require('../models/UserRole.js')(_sequelize,Sequelize);
 
 
 
